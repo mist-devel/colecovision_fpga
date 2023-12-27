@@ -38,6 +38,8 @@ package vdp18_core_comp_pack is
       rgb_b_o       : out std_logic_vector(0 to  7);
       hsync_n_o     : out std_logic;
       vsync_n_o     : out std_logic;
+      hblank_o      : out std_logic;
+      vblank_o      : out std_logic;
       comp_sync_n_o : out std_logic
     );
   end component;

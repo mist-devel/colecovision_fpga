@@ -103,6 +103,8 @@ entity vdp18_core is
     rgb_b_o       : out std_logic_vector(0 to 7);
     hsync_n_o     : out std_logic;
     vsync_n_o     : out std_logic;
+    hblank_o      : out std_logic;
+    vblank_o      : out std_logic;
     comp_sync_n_o : out std_logic
   );
 
@@ -132,6 +134,8 @@ architecture struct of vdp18_core is
          num_line_s       : hv_t;
   signal hsync_n_s,
          vsync_n_s        : std_logic;
+  signal hblank_s,
+         vblank_s         : std_logic;
   signal blank_s          : boolean;
 
   signal vert_inc_s       : boolean;
@@ -219,11 +223,15 @@ begin
       vert_inc_o    => vert_inc_s,
       hsync_n_o     => hsync_n_s,
       vsync_n_o     => vsync_n_s,
+      hblank_o      => hblank_s,
+      vblank_o      => vblank_s,
       blank_o       => blank_s
     );
 
   hsync_n_o     <= hsync_n_s;
   vsync_n_o     <= vsync_n_s;
+  hblank_o      <= hblank_s;
+  vblank_o      <= vblank_s;
   comp_sync_n_o <= not (hsync_n_s xor vsync_n_s);
 
 

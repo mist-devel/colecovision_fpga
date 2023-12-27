@@ -145,8 +145,7 @@ architecture Behavioral of ep994a is
 			MODEL            : integer := 1;
 			CLK_EN           : integer := 2031;
 			INVERT_HEAD_RA   : boolean := true;
-			EXT_MOTOR        : boolean := true;
-			IMG_TYPE         : integer := 3
+			EXT_MOTOR        : boolean := true
 		);
 		port (
 			clkcpu           : in  std_logic;
@@ -166,6 +165,7 @@ architecture Behavioral of ep994a is
 			cpu_din          : in  std_logic_vector( 7 downto 0);
 			cpu_dout         : out std_logic_vector( 7 downto 0);
 
+			img_type         : in  std_logic_vector( 2 downto 0);
 			img_mounted      : in  std_logic_vector( 1 downto 0);
 			img_wp           : in  std_logic_vector( 1 downto 0);
 			img_ds           : in  std_logic;
@@ -772,8 +772,8 @@ begin
 		hsync_n_o     => hsync_n_o,
 		vsync_n_o     => vsync_n_o,
 		--blank_n_o     => blank_n_o,
-		--hblank_o      => hblank_o,
-		--vblank_o      => vblank_o,
+		hblank_o      => hblank_o,
+		vblank_o      => vblank_o,
 		comp_sync_n_o => comp_sync_n_o
 	);
 
@@ -922,6 +922,7 @@ begin
 		cpu_din => disk_din,
 		cpu_dout => disk_dout,
 
+		img_type => "011",
 		-- The following signals are all passed in from the Top module
 		img_mounted => img_mounted,
 		img_wp => img_wp,

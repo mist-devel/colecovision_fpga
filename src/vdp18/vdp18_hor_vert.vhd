@@ -66,6 +66,8 @@ entity vdp18_hor_vert is
     vert_inc_o    : out boolean;
     hsync_n_o     : out std_logic;
     vsync_n_o     : out std_logic;
+    hblank_o      : out std_logic;
+    vblank_o      : out std_logic;
     blank_o       : out boolean
   );
 
@@ -198,6 +200,9 @@ begin
       end if;
     end if;
   end process counters;
+	
+  hblank_o <= '1' when hblank_q else '0';
+  vblank_o <= '1' when vblank_q else '0';
   --
   -----------------------------------------------------------------------------
 

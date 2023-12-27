@@ -37,7 +37,7 @@
 
 set_global_assignment -name FAMILY "Cyclone III"
 set_global_assignment -name DEVICE EP3C25E144C8
-set_global_assignment -name TOP_LEVEL_ENTITY mist_ti994a
+set_global_assignment -name TOP_LEVEL_ENTITY Ti994a_MiST
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
@@ -51,8 +51,7 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY ../../../syn/mist
 set_global_assignment -name PRE_FLOW_SCRIPT_FILE "quartus_sh:build_id.tcl"
 
 set_location_assignment PIN_7 -to LED
-set_location_assignment PIN_54 -to CLOCK_27[0]
-set_location_assignment PIN_55 -to CLOCK_27[1]
+set_location_assignment PIN_54 -to CLOCK_27
 set_location_assignment PIN_144 -to VGA_R[5]
 set_location_assignment PIN_143 -to VGA_R[4]
 set_location_assignment PIN_142 -to VGA_R[3]
@@ -288,7 +287,7 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_HS
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to UART_TX
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to UART_RX
 set_location_assignment PLL_1 -to pll|altpll_component|auto_generated|pll1
-set_global_assignment -name VHDL_FILE mist_Ti994a.vhd
+set_global_assignment -name SYSTEMVERILOG_FILE Ti994a_MiST.sv
 set_global_assignment -name VHDL_FILE build_id.vhd
 set_global_assignment -name VHDL_FILE spram.vhd
 set_global_assignment -name VHDL_FILE sprom.vhd
