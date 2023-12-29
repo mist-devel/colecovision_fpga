@@ -119,6 +119,8 @@ entity cv_console is
     rgb_b_o         : out std_logic_vector( 7 downto 0);
     hsync_n_o       : out std_logic;
     vsync_n_o       : out std_logic;
+    hblank_o        : out std_logic;
+    vblank_o        : out std_logic;
     comp_sync_n_o   : out std_logic;
     -- Audio Interface --------------------------------------------------------
     audio_o         : out unsigned(10 downto 0)
@@ -366,6 +368,8 @@ begin
       rgb_b_o       => rgb_b_o,
       hsync_n_o     => hsync_n_o,
       vsync_n_o     => vsync_n_o,
+      hblank_o      => hblank_o,
+      vblank_o      => vblank_o,
       comp_sync_n_o => comp_sync_n_o
     );
 
