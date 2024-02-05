@@ -77,6 +77,12 @@ module Coleco_MiST(
 `ifdef SPDIF_AUDIO
 	output        SPDIF,
 `endif
+`ifdef I2S_AUDIO_HDMI
+	output        HDMI_MCLK,
+	output        HDMI_BCK,
+	output        HDMI_LRCK,
+	output        HDMI_SDATA,
+`endif
 `ifdef USE_AUDIO_IN
 	input         AUDIO_IN,
 `endif
@@ -843,6 +849,14 @@ i2s i2s (
 	.left_chan({2'd0, unsigned_audio, 3'd0}),
 	.right_chan({2'd0, unsigned_audio, 3'd0})
 );
+`ifdef I2S_AUDIO_HDMI
+assign HDMI_MCLK = 0;
+always @(posedge clk_vid) begin
+	HDMI_BCK <= I2S_BCK;
+	HDMI_LRCK <= I2S_LRCK;
+	HDMI_SDATA <= I2S_DATA;
+end
+`endif
 `endif
 
 `ifdef SPDIF_AUDIO
